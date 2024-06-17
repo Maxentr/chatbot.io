@@ -15,7 +15,23 @@ export default abstract class Bot {
   public abstract onMessage(message: string): void;
   public abstract sayWelcome(): void;
 
-  async messageAI(message: string): Promise<string> {
+  Bot(name: string, description: string) {
+    this.name = name;
+    this.description = description;
+  }
+
+  protected addMessage(message: string): void {
+    const chatContainer = document.getElementById('chat-messages');
+    if (!chatContainer) throw new Error('No chat messages container found');
+
+    chatContainer.innerHTML += `
+      <div class="message text-left">
+        <p><strong>${this.name}</strong> <span class="bot-message">${message}</span></p>
+      </div>
+    `;
+  }
+
+  protected async messageAI(message: string): Promise<string> {
     if (message.length > 100) throw new Error('Message is too long');
 
     const chatResponse = await client.chat({
