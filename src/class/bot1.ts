@@ -17,16 +17,19 @@ export default class Bot1 extends Bot {
     return `The commands available on this bot are : "${this.COMMAND_WELCOME}", "${this.COMMAND_NEXT_MCU}" and "${this.COMMAND_GEOLOCATION}"`;
   }
 
-  public async onMessage(message: string): Promise<string | null> {
+  public async onMessage(message: string): Promise<void> {
     switch (true) {
       case message.includes(this.COMMAND_WELCOME):
-        return this.sayWelcome();
+        this.addMessage(this.sayWelcome());
+        break;
       case message.includes(this.COMMAND_NEXT_MCU):
-        return this.getNextMCUFilm();
+        this.addMessage((await this.getNextMCUFilm()) ?? '');
+        break;
       case message.includes(this.COMMAND_GEOLOCATION):
-        return this.getUserLocation();
+        this.addMessage((await this.getUserLocation()) ?? '');
+        break;
       default:
-        return null;
+        this.addMessage('Unknown command, type "help" to find out the available commands');
     }
   }
 
