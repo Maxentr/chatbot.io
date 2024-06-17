@@ -10,6 +10,7 @@ export default abstract class Bot {
 
   public abstract getHelp(): string;
   public abstract onMessage(message: string): void;
+  public abstract sayWelcome(): void;
 
   constructor(name: string, description: string) {
     this.name = name;
