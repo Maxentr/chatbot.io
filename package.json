@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@mistralai/mistralai": "^0.5.0",
+    "axios": "^1.7.2",
     "typescript": "^5.4.5"
   }
 }

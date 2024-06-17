@@ -1,5 +1,5 @@
 import './index.scss';
 
-const hello = 'hello';
+const hello = 'hello test';
 
 console.log(hello);
