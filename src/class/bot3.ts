@@ -9,8 +9,8 @@ export class Bot3 extends Bot {
     public getHelp(): string {
         return `Commandes disponibles:
         - help: Affiche les commandes disponibles
-        - get character [nom]: Affiche les informations d'un personnage
-        - get planet [nom]: Affiche les informations d'une planète
+        - get character [id]: Affiche les informations d'un personnage
+        - get planet [id]: Affiche les informations d'une planète
         - common action: Action commune à tous les bots`;
     }
 
@@ -40,9 +40,9 @@ export class Bot3 extends Bot {
     }
 
     // Fonction pour obtenir les informations d'un personnage
-    private async getCharacter(name: string): Promise<string> {
+    private async getCharacter(id: string): Promise<string> {
         try {
-            const response = await axios.get(`https://swapi.dev/api/people/?search=${name}`);
+            const response = await axios.get(`https://swapi.dev/api/people/${id}`);
             const character = response.data.results[0];
             if (character) {
                 return `Nom: ${character.name}, Taille: ${character.height}, Poids: ${character.mass}`;
@@ -55,9 +55,9 @@ export class Bot3 extends Bot {
     }
 
     // Fonction pour obtenir les informations d'une planète
-    private async getPlanet(name: string): Promise<string> {
+    private async getPlanet(id: string): Promise<string> {
         try {
-            const response = await axios.get(`https://swapi.dev/api/planets/?search=${name}`);
+            const response = await axios.get(`https://swapi.dev/api/planets/?search=${id}`);
             const planet = response.data.results[0];
             if (planet) {
                 return `Nom: ${planet.name}, Climat: ${planet.climate}, Population: ${planet.population}`;
