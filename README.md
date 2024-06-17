@@ -1,34 +1,25 @@
-# Hello World
+# chatbot.io
 
-## Installation
+A simple chatbot with 3 bots in it.
 
-Use the package manager [npm](https://www.npmjs.com/) to install helloworld.
+## How to install
 
-Use node v20 use :
+1. Clone the repository
+2. In `src/class/bot.ts` change the `API_ KEY` to your own Mistral API key
+3. Run the following command :
+
 ```bash
-nvm install 20
+yarn install
 ```
 
+## How to run
+
 ```bash
-npm i
+yarn start
 ```
 
-## Usage
-
-Start the application dev with :
+## How to build
 
 ```bash
-npm run start
-```
-
-Created the dist with :
-
-```bash
-npm run dist
-```
-
-Analyse the coding rules with :
-
-```bash
-npm run lint
+yarn build
 ```
