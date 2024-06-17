@@ -29,10 +29,10 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "class-methods-use-this": 0,
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": 0,
     "linebreak-style": 0,
     "global-require": 0,
-    "eslint linebreak-style": [0, "error", "windows"],
+    "eslint linebreak-style": 0,
     "@typescript-eslint/comma-dangle": 0,
     "no-new": 0,
     "no-console": 0,
