@@ -17,11 +17,16 @@ export default class Bot1 extends Bot {
     return `The commands available on this bot are : "${this.COMMAND_WELCOME}", "${this.COMMAND_NEXT_MCU}" and "${this.COMMAND_GEOLOCATION}"`;
   }
 
-  public sayWelcome(): string {
-    return `Hello, I am ${this.name} : ${this.description}`;
+  public async onMessage(message: string): Promise<string | null> {
+    switch (true) {
+      case message.includes(this.COMMAND_WELCOME):
+        return this.sayWelcome();
+      default:
+        return null;
+    }
   }
 
-  public async onMessage() {
-    // TODO
+  public sayWelcome(): string {
+    return `Hello, I am ${this.name} : ${this.description}`;
   }
 }
