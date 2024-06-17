@@ -29,9 +29,6 @@ export class Bot3 extends Bot {
             case 'get planet':
                 response = await this.getPlanet(args.join(' '));
                 break;
-            case 'common action':
-                response = await this.commonAction(args.join(' '));
-                break;
             default:
                 response = 'Commande non reconnue. Tapez "help" pour voir les commandes disponibles.';
         }
@@ -57,7 +54,7 @@ export class Bot3 extends Bot {
     // Fonction pour obtenir les informations d'une planète
     private async getPlanet(id: string): Promise<string> {
         try {
-            const response = await axios.get(`https://swapi.dev/api/planets/?search=${id}`);
+            const response = await axios.get(`https://swapi.dev/api/planets/${id}`);
             const planet = response.data.results[0];
             if (planet) {
                 return `Nom: ${planet.name}, Climat: ${planet.climate}, Population: ${planet.population}`;
@@ -67,10 +64,5 @@ export class Bot3 extends Bot {
         } catch (error) {
             return 'Erreur lors de la récupération des informations de la planète.';
         }
-    }
-
-    // Fonction pour l'action commune à tous les bots
-    private async commonAction(args: string): Promise<string> {
-        return 'Action commune déclenchée.';
     }
 }
