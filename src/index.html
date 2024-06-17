@@ -9,18 +9,18 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9" style="padding: 0">
                 <div class="card">
                     <div class="card-header">
                         <h5>Chat Principal</h5>
                     </div>
                     <div class="card-body" style="height: 70vh; overflow-y: scroll;">
                         <div id="chat-messages">
-                            <div class="message">
-                                <strong>Utilisateur:</strong> Bonjour !
+                            <div class="message text-right">
+                                <p><strong>Utilisateur:</strong> <span class="user-message">Bonjour !</span></p>
                             </div>
-                            <div class="message">
-                                <strong>Bot:</strong> Bonjour, comment puis-je vous aider ?
+                            <div class="message text-left">
+                              <p><strong>Bot:</strong> <span class="bot-message">Bonjour, comment puis-je vous aider ?</span></p>
                             </div>
                         </div>
                     </div>
@@ -35,30 +35,24 @@
                 </div>
             </div>
             <!-- Barre latérale -->
-            <div class="col-md-3">
+            <div class="col-md-3" style="padding: 0">
                 <div class="card">
                     <div class="card-header">
                         <h5>Bots Disponibles</h5>
                     </div>
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <h6>Bot 1</h6>
-                                <p>Le bot 1 est spécialisé dans l'assistance technique.</p>
-                                <button class="btn btn-sm btn-secondary">Utiliser</button>
-                            </li>
-                            <li class="list-group-item">
-                                <h6>Bot 2</h6>
-                                <p>Le bot 2 est spécialisé dans le support client.</p>
-                                <button class="btn btn-sm btn-secondary">Utiliser</button>
-                            </li>
-                            <li class="list-group-item">
-                                <h6>Bot 3</h6>
-                                <p>Le bot 3 est spécialisé dans les questions générales.</p>
-                                <button class="btn btn-sm btn-secondary">Utiliser</button>
-                            </li>
-                        </ul>
-                    </div>
+                      <form>
+                          <div class="form-group">
+                              <label for="bot-selector">Sélectionnez le bot :</label>
+                              <select class="form-control" id="bot-selector">
+                                  <option value="bot1">Bot 1 - Assistance Technique</option>
+                                  <option value="bot2">Bot 2 - Support Client</option>
+                                  <option value="bot3">Bot 3 - Questions Générales</option>
+                              </select>
+                          </div>
+                          <button type="button" class="btn btn-primary btn-block">Parler au Bot</button>
+                      </form>
+                  </div>
                 </div>
             </div>
         </div>

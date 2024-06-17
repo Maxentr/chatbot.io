@@ -5,16 +5,29 @@ const apiKey = 'API_KEY';
 const client = new MistralClient(apiKey);
 
 export default abstract class Bot {
-  abstract messages: string[];
-  abstract name: string;
-  abstract description: string;
+  name!: string;
+  description!: string;
 
   public abstract getHelp(): string;
-  public abstract run(message: string): void;
-
   public abstract onMessage(message: string): void;
 
-  async messageAI(message: string): Promise<string> {
+  constructor(name: string, description: string) {
+    this.name = name;
+    this.description = description;
+  }
+
+  protected addMessage(message: string): void {
+    const chatContainer = document.getElementById('chat-messages');
+    if (!chatContainer) throw new Error('No chat messages container found');
+
+    chatContainer.innerHTML += `
+      <div class="message text-left">
+        <p><strong>${this.name}</strong> <span class="bot-message">${message}</span></p>
+      </div>
+    `;
+  }
+
+  protected async messageAI(message: string): Promise<string> {
     if (message.length > 100) throw new Error('Message is too long');
 
     const chatResponse = await client.chat({
