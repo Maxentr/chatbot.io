@@ -1,61 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat avec Bots</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-9" style="padding: 0">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Chat Principal</h5>
-                    </div>
-                    <div class="card-body" style="height: 70vh; overflow-y: scroll;">
-                        <div id="chat-messages">
-                            <div class="message text-right">
-                                <p><strong>Utilisateur:</strong> <span class="user-message">Bonjour !</span></p>
-                            </div>
-                            <div class="message text-left">
-                              <p><strong>Bot:</strong> <span class="bot-message">Bonjour, comment puis-je vous aider ?</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Écrire un message...">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">Envoyer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="row">
+        <div class="col-md-9" style="padding: 0">
+          <div class="card">
+            <div class="card-header">
+              <h5>Chat Principal</h5>
             </div>
-            <!-- Barre latérale -->
-            <div class="col-md-3" style="padding: 0">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Bots Disponibles</h5>
-                    </div>
-                    <div class="card-body">
-                      <form>
-                          <div class="form-group">
-                              <label for="bot-selector">Sélectionnez le bot :</label>
-                              <select class="form-control" id="bot-selector">
-                                  <option value="bot1">Bot 1 - Assistance Technique</option>
-                                  <option value="bot2">Bot 2 - Support Client</option>
-                                  <option value="bot3">Bot 3 - Questions Générales</option>
-                              </select>
-                          </div>
-                          <button id="selector-button" type="button" class="btn btn-primary btn-block">Parler au Bot</button>
-                      </form>
-                  </div>
+            <div class="card-body" style="height: 70vh; overflow-y: scroll">
+              <div id="chat-messages">
+                <div class="message text-right">
+                  <p><strong>Utilisateur:</strong> <span class="user-message">Bonjour !</span></p>
                 </div>
+                <div class="message text-left">
+                  <p>
+                    <strong>Bot:</strong>
+                    <span class="bot-message">Bonjour, comment puis-je vous aider ?</span>
+                  </p>
+                </div>
+              </div>
             </div>
+            <div class="card-footer">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Écrire un message..." />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">Envoyer</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Barre latérale -->
+        <div class="col-md-3" style="padding: 0">
+          <div class="card">
+            <div class="card-header">
+              <h5>Bots Disponibles</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="bot-selector">Sélectionnez le bot :</label>
+                  <select class="form-control" id="bot-selector">
+                    <option value="bot1">Bot 1 - Assistance Technique</option>
+                    <option value="bot2">Bot 2 - Support Client</option>
+                    <option value="bot3">Bot 3 - Questions Générales</option>
+                  </select>
+                </div>
+                <button id="selector-button" type="button" class="btn btn-primary btn-block">
+                  Parler au Bot
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

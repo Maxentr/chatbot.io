@@ -3,6 +3,7 @@
 A simple chatbot with 3 bots in it.
 
 ## Members
+
 - Pierre
 - Mathieu
 - Malo
