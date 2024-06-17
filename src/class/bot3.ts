@@ -2,8 +2,9 @@ import Bot from './bot';
 import axios from 'axios';
 
 export class Bot3 extends Bot {
-  constructor(name: string, description: string) {
-    super(name, description);
+
+  constructor() {
+    super("bot star wars", "bot star wars qui donne des informations sur les personnages et les planètes de l'univers Star Wars.");
   }
 
   public getHelp(): string {

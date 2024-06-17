@@ -13,8 +13,12 @@ export default class Bot1 extends Bot {
 
   description: string = "I'm like a dog with a bone. I never let go.";
 
-  public getHelp(): string {
-    return `The commands available on this bot are : "${this.COMMAND_WELCOME}", "${this.COMMAND_NEXT_MCU}" and "${this.COMMAND_GEOLOCATION}"`;
+  constructor() {
+    super('Jason Statham Bot', "I'm like a dog with a bone. I never let go.");
+  }
+
+  public getHelp(): any {
+    this.addMessage(`The commands available on this bot are : "${this.COMMAND_WELCOME}", "${this.COMMAND_NEXT_MCU}" and "${this.COMMAND_GEOLOCATION}"`);
   }
 
   public async onMessage(message: string): Promise<void> {
