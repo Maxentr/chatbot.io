@@ -6,13 +6,14 @@ const client = new MistralClient(apiKey);
 
 export default abstract class Bot {
   abstract messages: string[];
+
   abstract name: string;
+
   abstract description: string;
 
   public abstract getHelp(): string;
-  public abstract run(message: string): void;
-
   public abstract onMessage(message: string): void;
+  public abstract sayWelcome(): void;
 
   async messageAI(message: string): Promise<string> {
     if (message.length > 100) throw new Error('Message is too long');
