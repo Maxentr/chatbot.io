@@ -1,48 +1,42 @@
+import Bot from './bot';
 import axios from 'axios';
 
-interface Command {
-    action: (args: string) => Promise<string>;
-    description: string;
-}
-
-export class ChatBot {
-    private name: string;
-    private commands: Map<string, Command>;
-
-    constructor(name: string) {
-        this.name = name;
-        this.commands = new Map<string, Command>();
-
-        // Enregistrement des commandes
-        this.registerCommand('help', this.getHelp, 'Affiche les commandes disponibles');
-        this.registerCommand('get character', this.getCharacter, 'Affiche les informations d\'un personnage');
-        this.registerCommand('get planet', this.getPlanet, 'Affiche les informations d\'une planète');
-        this.registerCommand('common action', this.commonAction, 'Action commune à tous les bots');
+export class Bot3 extends Bot {
+    constructor(name: string, description: string) {
+        super(name, description);
     }
 
-    private registerCommand(command: string, action: (args: string) => Promise<string>, description: string) {
-        this.commands.set(command, { action, description });
-    }
-
-    public async handleMessage(message: string): Promise<string> {
-        const [command, ...args] = message.split(' ');
-        const fullCommand = command + (args.length > 0 ? ' ' + args.join(' ') : '');
-
-        if (this.commands.has(fullCommand)) {
-            const commandObject = this.commands.get(fullCommand);
-            return commandObject!.action(args.join(' '));
-        }
-
-        return 'Commande non reconnue. Tapez "help" pour voir les commandes disponibles.';
-    }
-
-    // Fonction pour la commande help
-    private async getHelp(args: string): Promise<string> {
+    public getHelp(): string {
         return `Commandes disponibles:
         - help: Affiche les commandes disponibles
         - get character [nom]: Affiche les informations d'un personnage
         - get planet [nom]: Affiche les informations d'une planète
         - common action: Action commune à tous les bots`;
+    }
+
+    public async onMessage(message: string): Promise<void> {
+        const [command, ...args] = message.split(' ');
+        const fullCommand = command + (args.length > 0 ? ' ' + args.join(' ') : '');
+
+        let response;
+        switch (fullCommand) {
+            case 'help':
+                response = this.getHelp();
+                break;
+            case 'get character':
+                response = await this.getCharacter(args.join(' '));
+                break;
+            case 'get planet':
+                response = await this.getPlanet(args.join(' '));
+                break;
+            case 'common action':
+                response = await this.commonAction(args.join(' '));
+                break;
+            default:
+                response = 'Commande non reconnue. Tapez "help" pour voir les commandes disponibles.';
+        }
+
+        this.addMessage(response);
     }
 
     // Fonction pour obtenir les informations d'un personnage
