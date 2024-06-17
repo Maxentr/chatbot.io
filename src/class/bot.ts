@@ -5,13 +5,13 @@ const apiKey = 'API_KEY';
 const client = new MistralClient(apiKey);
 
 export default abstract class Bot {
-  abstract name: string;
-  abstract description: string;
+  name!: string;
+  description!: string;
 
   public abstract getHelp(): string;
   public abstract onMessage(message: string): void;
 
-  Bot(name: string, description: string) {
+  constructor(name: string, description: string) {
     this.name = name;
     this.description = description;
   }
