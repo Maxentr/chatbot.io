@@ -23,6 +23,8 @@ export default class Bot1 extends Bot {
         return this.sayWelcome();
       case message.includes(this.COMMAND_NEXT_MCU):
         return this.getNextMCUFilm();
+      case message.includes(this.COMMAND_GEOLOCATION):
+        return this.getUserLocation();
       default:
         return null;
     }
@@ -43,6 +45,26 @@ export default class Bot1 extends Bot {
       return `The next MCU film is "${data.title}" : ${data.overview}`;
     } catch (error) {
       console.error('Error fetching the MCU film data:', error);
+      return null;
+    }
+  }
+
+  public async getUserLocation() :Promise<string | null> {
+    try {
+      const ipResponse = await fetch('https://api.ipify.org/?format=json');
+      if (!ipResponse.ok) {
+        throw new Error(`IP API error: ${ipResponse.statusText}`);
+      }
+      const ipData = await ipResponse.json();
+      const { ip } = ipData;
+      const locationResponse = await fetch(`http://ip-api.com/json/${ip}`);
+      if (!locationResponse.ok) {
+        throw new Error(`Location API error: ${locationResponse.statusText}`);
+      }
+      const locationData = await locationResponse.json();
+      return `Your are located in ${locationData.city}, ${locationData.country}`;
+    } catch (error) {
+      console.error(error);
       return null;
     }
   }
