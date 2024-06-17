@@ -3,13 +3,14 @@
 A simple chatbot with 3 bots in it.
 
 ## Members
+You can check closed issues to see all the work.
 
-- Pierre
-- Mathieu
-- Malo
-- Manon
-- Victorien
-- Maxent
+- Pierre : Liaison entre le front et la logique
+- Mathieu : Création du bot MCU
+- Malo : Création du bot Star Wars
+- Manon : Intégration du front
+- Victorien : Création du bot Pokémon 
+- Maxent : Création de la class générique Bot
 
 ## How to install
 
