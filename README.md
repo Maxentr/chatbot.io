@@ -2,6 +2,14 @@
 
 A simple chatbot with 3 bots in it.
 
+## Members
+- Pierre
+- Mathieu
+- Malo
+- Manon
+- Victorien
+- Maxent
+
 ## How to install
 
 1. Clone the repository
