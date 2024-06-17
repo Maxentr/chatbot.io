@@ -21,6 +21,8 @@ export default class Bot1 extends Bot {
     switch (true) {
       case message.includes(this.COMMAND_WELCOME):
         return this.sayWelcome();
+      case message.includes(this.COMMAND_NEXT_MCU):
+        return this.getNextMCUFilm();
       default:
         return null;
     }
@@ -28,5 +30,20 @@ export default class Bot1 extends Bot {
 
   public sayWelcome(): string {
     return `Hello, I am ${this.name} : ${this.description}`;
+  }
+
+  public async getNextMCUFilm() :Promise<string | null> {
+    let data = null;
+    try {
+      const response = await fetch('https://www.whenisthenextmcufilm.com/api');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      data = await response.json();
+      return `The next MCU film is "${data.title}" : ${data.overview}`;
+    } catch (error) {
+      console.error('Error fetching the MCU film data:', error);
+      return null;
+    }
   }
 }
