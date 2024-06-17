@@ -15,7 +15,7 @@ export default abstract class Bot {
   constructor(name: string, description: string) {
     this.name = name;
     this.description = description;
-  }
+    }
 
   protected addMessage(message: string): void {
     const chatContainer = document.getElementById('chat-messages');
